@@ -8,14 +8,10 @@ ventana.geometry("5000x700")
 ventana.title("ROAD FIGHTER")
 ventahija=tkinter.Toplevel()
 
-
-
-
+lista=[ ]
 
 #FONDO DE LA PANTALLA 1.
 canvas = tkinter.Canvas(ventahija,width=3000,height=800, bg="white")
-lista=[]
-
 
 
 l=tkinter.PhotoImage(file="lado de la pantalla 1.png")
@@ -25,17 +21,19 @@ izquierdo=canvas.create_image(300,0,image=l)
 d=tkinter.PhotoImage(file="lado de la pantalla 1.png")
 derecho= canvas.create_image(1100,350,image=d)
 
-##############################################
 
-##############################################
+#MOVER EL CARRO DEL JUGADOR.
+"""
+def CarroJugador1 (event):
 
-
+    global 
+"""
 
     
 # MINIVAN DE LA IZQUIERDA CORRIENDO.   
 m=0    
 def Van():
-    global ventana, canvas, m, a, ventahija
+    global ventana, canvas, m, a
     canvas.move(a,0,5)
     if canvas.coords(a)[1]>=800:
         canvas.move(a,0,-canvas.coords(a)[1])
@@ -130,12 +128,50 @@ def Combustible_b():
 
 
 
-#MOVER EL CARRO DEL JUGADOR.
+def keyup(e):
+  global x,lista
 
+  if(e.keycode in lista):
+    lista.pop(lista.index(e.keycode))
+   
 
-     
-
+def keydown(e):
+  global prime,segu,lista
+  if not e.keycode in lista:
+      
+    lista.append(e.keycode)
+  
  
+J=tkinter.PhotoImage(file="Jugador 1.png")
+
+prime=canvas.create_image(400,500,image=J)  
+
+J2=tkinter.PhotoImage(file="Jugador 2.png")
+segu=canvas.create_image(1250,500,image=J2)  
+def key():
+  global lista, J, prime, J2, segu
+
+  canvas.focus_set()
+
+
+
+  if(65 in lista):  
+    canvas.move(prime,-5,0)
+   
+ 
+  if(68 in lista):
+    canvas.move(prime,5,0) 
+ 
+    
+  if(74 in lista):
+    canvas.move(segu,-5,0) 
+  if(76 in lista):
+    canvas.move(segu,5,0) 
+
+
+
+  
+
         
 
 #canvas = tkinter.Canvas(ventahija,width=3000,height=800)
@@ -144,73 +180,32 @@ v=tkinter.PhotoImage(file="MiniVan.png")
 #a=canvas.create_Image(200,600, image=M)
 
 ventahija.iconify()
-
-
-
-
-def keyup(e):
-  
-
-  if(e.keycode in lista):
-    lista.pop(lista.index(e.keycode))
-   
-
-def keydown(e):
-
-  if not e.keycode in lista:
-    lista.append(e.keycode)
-  
-     
-def key():
-  global lista, keydown,keyup
-  if(65 in lista):
-    print("jajajaja")
-    canvas.move(carro1,-5,0)
-    
-  if(74 in lista):
-    print("jajajaja")
-    canvas.move(carro2,-5,0)
-  if(68 in lista):
-    print("jajajaja")
-    canvas.move(carro1,5,0)
-  if(76 in lista):
-    print("jajajaja")
-    canvas.move(carro2,5,0)
-canvas.bind("<KeyPress>",keydown)
-canvas.bind("<KeyRelease>",keyup)
-
-
-
-
      
 def main():
-    global ku, canvas, ventahija
+    global ku, canvas, ventahija,mi
 
-    key()
-
-
-    #pantallacorriendo_a()
-    #pantallacorriendo_b()
-
+ 
     Van()
     Van_b()
     Runner_a()
     Runner_b()
     Combustible_a()
     Combustible_b()
+   
 
-
-    
-
-
+    pantallacorriendo_a()
+    pantallacorriendo_b()
         
     ventahija.deiconify()
+    key()
     ventana.iconify()
+    
+
   
     ventahija.after(15,main)
 
-def primernivel():
 
+def primernivel():
     
     main()
     
@@ -265,17 +260,13 @@ boton33 = tkinter.Button(ventana,text="SALIR").place(x=100,y=500)
 M=tkinter.PhotoImage(file="MiniVan.png")
 a=canvas.create_image(200,40,image=M)
 
-F=tkinter.PhotoImage(file="Figther.png")
-boba=canvas.create_image(250,40,image=F)
-
 R=tkinter.PhotoImage(file="Runner.png")
 i=canvas.create_image(200,40,image=R)
 
 C=tkinter.PhotoImage(file="Combustible.png")
 o=canvas.create_image(400,40,image=C)
 
-J=tkinter.PhotoImage(file="Jugador 1.png")
-carro1=canvas.create_image(400,500,image=J)
+
 
 
 
@@ -285,22 +276,24 @@ carro1=canvas.create_image(400,500,image=J)
 M2=tkinter.PhotoImage(file="MiniVan.png")
 z=canvas.create_image(1000,40,image=M2)
 
-#w=F2=tkinter.PhotoImage(file="Figther.png")
 
 
 R2=tkinter.PhotoImage(file="Runner.png")
 q=canvas.create_image(1000,40,image=R2)
 
 
+
 C2=tkinter.PhotoImage(file="Combustible.png")
 y=canvas.create_image(1200,40,image=C2)
 
-J2=tkinter.PhotoImage(file="Jugador 2.png")
-carro2=canvas.create_image(1250,500,image=J2)
+
+
+# Bindeamos
+canvas.bind("<KeyPress>",keydown)
+canvas.bind("<KeyRelease>",keyup)
 
 
 
-canvas.focus_set()
 
 canvas.pack()
 ventana.mainloop()
