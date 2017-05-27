@@ -21,15 +21,7 @@ izquierdo=canvas.create_image(300,0,image=l)
 d=tkinter.PhotoImage(file="lado de la pantalla 1.png")
 derecho= canvas.create_image(1100,350,image=d)
 
-
-#MOVER EL CARRO DEL JUGADOR.
-"""
-def CarroJugador1 (event):
-
-    global 
-"""
-
-    
+  
 # MINIVAN DE LA IZQUIERDA CORRIENDO.   
 m=0    
 def Van():
@@ -54,19 +46,12 @@ def pantallacorriendo_b():
     if canvas.coords(derecho)[1]>=2400:
         canvas.move(derecho,0,-canvas.coords(derecho)[1])
 
-   
-
-
-
-
-
 #MINIVAN DE LA DERECHA CORRIENDO. 
 def Van_b():
     global ventana, canvas, z
     canvas.move(z,0,5)
     if canvas.coords(z)[1]>=800:
         canvas.move(z,0,-canvas.coords(z)[1])
-
 
 
 #RUNNER DE LA IZQUIERDA CORRIENDO.
@@ -127,7 +112,7 @@ def Combustible_b():
 
 
 
-
+#JUGADORES CORREN CON EL TECLADO. 
 def keyup(e):
   global x,lista
 
@@ -144,7 +129,7 @@ def keydown(e):
  
 J=tkinter.PhotoImage(file="Jugador 1.png")
 
-prime=canvas.create_image(400,500,image=J)  
+prime=canvas.create_image(400,600,image=J)  
 
 J2=tkinter.PhotoImage(file="Jugador 2.png")
 segu=canvas.create_image(1250,500,image=J2)  
@@ -152,8 +137,6 @@ def key():
   global lista, J, prime, J2, segu
 
   canvas.focus_set()
-
-
 
   if(65 in lista):  
     canvas.move(prime,-5,0)
@@ -169,10 +152,24 @@ def key():
     canvas.move(segu,5,0) 
 
 
+#FIGHTER DE LA IZQUIERDA PERSIGUE A LOS JUGADORES.
 
-  
+def Fighter_a():
+   if(canvas.coords(fi)[1] < 550):
+        if(canvas.coords(prime)[0]< canvas.coords(fi)[0]):
+          canvas.move(fi,-5,5)
+          
+        elif(canvas.coords(prime)[0] > canvas.coords (fi)[0]):
+           canvas.move(fi, 5,5)
+        else:
+           canvas.move(fi,0,5)
+   else:
+      canvas.move(fi,0,-550)
+       
 
-        
+
+
+
 
 #canvas = tkinter.Canvas(ventahija,width=3000,height=800)
 #canvas.pack()
@@ -191,6 +188,7 @@ def main():
     Runner_b()
     Combustible_a()
     Combustible_b()
+    Fighter_a()
    
 
     pantallacorriendo_a()
@@ -267,8 +265,8 @@ C=tkinter.PhotoImage(file="Combustible.png")
 o=canvas.create_image(400,40,image=C)
 
 
-
-
+F1=tkinter.PhotoImage(file="Figther.png")
+fi=canvas.create_image(300,40,image=F1)
 
 
 #CARROS CARRETERA DERECHA.
@@ -277,14 +275,16 @@ M2=tkinter.PhotoImage(file="MiniVan.png")
 z=canvas.create_image(1000,40,image=M2)
 
 
-
 R2=tkinter.PhotoImage(file="Runner.png")
 q=canvas.create_image(1000,40,image=R2)
 
 
-
 C2=tkinter.PhotoImage(file="Combustible.png")
 y=canvas.create_image(1200,40,image=C2)
+
+
+F2=tkinter.PhotoImage(file="Figther.png")
+fig=canvas.create_image(1200,40,image=F2)
 
 
 
