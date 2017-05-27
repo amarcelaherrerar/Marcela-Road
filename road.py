@@ -132,7 +132,7 @@ J=tkinter.PhotoImage(file="Jugador 1.png")
 prime=canvas.create_image(400,600,image=J)  
 
 J2=tkinter.PhotoImage(file="Jugador 2.png")
-segu=canvas.create_image(1250,500,image=J2)  
+segu=canvas.create_image(1250,600,image=J2)  
 def key():
   global lista, J, prime, J2, segu
 
@@ -152,7 +152,7 @@ def key():
     canvas.move(segu,5,0) 
 
 
-#FIGHTER DE LA IZQUIERDA PERSIGUE A LOS JUGADORES.
+#FIGHTER DE LA IZQUIERDA PERSIGUE AL JUGADOR DE LA IZQ.
 
 def Fighter_a():
    if(canvas.coords(fi)[1] < 550):
@@ -168,6 +168,20 @@ def Fighter_a():
        
 
 
+#FIGHTER DE LA DERECHA PERSIGUE AL JUGADOR DE LA DERCHA.
+
+def Fighter_b():
+   if(canvas.coords(fig)[1] < 550):
+        if(canvas.coords(segu)[0]< canvas.coords(fig)[0]):
+          canvas.move(fig,-5,5)
+          
+        elif(canvas.coords(segu)[0] > canvas.coords (fig)[0]):
+           canvas.move(fig, 5,5)
+        else:
+           canvas.move(fig,0,5)
+   else:
+      canvas.move(fig,0,-550)
+      
 
 
 
@@ -189,6 +203,7 @@ def main():
     Combustible_a()
     Combustible_b()
     Fighter_a()
+    Fighter_b()
    
 
     pantallacorriendo_a()
