@@ -11,6 +11,8 @@ ventahija=tkinter.Toplevel()
 lista=[ ]
 
 #FONDO DE LA PANTALLA 1.
+
+
 canvas = tkinter.Canvas(ventahija,width=3000,height=800, bg="white")
 
 
@@ -20,6 +22,7 @@ izquierdo=canvas.create_image(300,0,image=l)
 
 d=tkinter.PhotoImage(file="lado de la pantalla 1.png")
 derecho= canvas.create_image(1100,350,image=d)
+
 
   
 # MINIVAN DE LA IZQUIERDA CORRIENDO.   
@@ -112,7 +115,8 @@ def Combustible_b():
 
 
 
-#JUGADORES CORREN CON EL TECLADO. 
+#JUGADORES CORREN CON EL TECLADO.
+
 def keyup(e):
   global x,lista
 
@@ -132,7 +136,8 @@ J=tkinter.PhotoImage(file="Jugador 1.png")
 prime=canvas.create_image(400,600,image=J)  
 
 J2=tkinter.PhotoImage(file="Jugador 2.png")
-segu=canvas.create_image(1250,600,image=J2)  
+segu=canvas.create_image(1250,600,image=J2)
+
 def key():
   global lista, J, prime, J2, segu
 
@@ -140,50 +145,104 @@ def key():
 
   if(65 in lista):  
     canvas.move(prime,-5,0)
-   
- 
+    
+
+        
+       
   if(68 in lista):
-    canvas.move(prime,5,0) 
- 
+    canvas.move(prime,5,0)
+
+     
     
   if(74 in lista):
-    canvas.move(segu,-5,0) 
+    canvas.move(segu,-5,0)
+    
   if(76 in lista):
-    canvas.move(segu,5,0) 
+    canvas.move(segu,5,0)
 
 
-#FIGHTER DE LA IZQUIERDA PERSIGUE AL JUGADOR DE LA IZQ.
+
+#FIGHTER DE LA IZQUIERDA PERSIGUE AL JUGADOR DE LA IZQ
 
 def Fighter_a():
-   if(canvas.coords(fi)[1] < 550):
+   if(canvas.coords(fi)[1] < 700):
         if(canvas.coords(prime)[0]< canvas.coords(fi)[0]):
-          canvas.move(fi,-5,5)
+          canvas.move(fi,-2,5)
           
         elif(canvas.coords(prime)[0] > canvas.coords (fi)[0]):
-           canvas.move(fi, 5,5)
+           canvas.move(fi, 2,5)
         else:
-           canvas.move(fi,0,5)
+           canvas.move(fi,2,5)
    else:
-      canvas.move(fi,0,-550)
+      canvas.move(fi,0,-700)
        
 
 
 #FIGHTER DE LA DERECHA PERSIGUE AL JUGADOR DE LA DERCHA.
 
 def Fighter_b():
-   if(canvas.coords(fig)[1] < 550):
+   if(canvas.coords(fig)[1] < 700):
         if(canvas.coords(segu)[0]< canvas.coords(fig)[0]):
-          canvas.move(fig,-5,5)
+          canvas.move(fig,-2,5)
           
         elif(canvas.coords(segu)[0] > canvas.coords (fig)[0]):
-           canvas.move(fig, 5,5)
+           canvas.move(fig, 2,5)
         else:
-           canvas.move(fig,0,5)
+           canvas.move(fig,2,5)
    else:
-      canvas.move(fig,0,-550)
-      
+      canvas.move(fig,0,-700)
+
+#CHOQUESS!
+
+ex=tkinter.PhotoImage(file="explosion.png")
+def Coques_a():
+    global canvas
+
+    canvas.focus_set()
+    xp = canvas.coords(prime)[0]
+    xa = canvas.coords (a) [0]
+    xi = canvas.coords (i) [0]
+    xf = canvas.coords (fi) [0]
+    yp = canvas.coords(prime)[1]
+    ya= canvas.coords (a) [1]
+    yi = canvas.coords (i) [1]
+    yf = canvas.coords (fi) [1]
+    
+    
+    if (xp >= xa and xp <= xa+31 and yp >= ya and yp <= ya+64):
+        explosion=canvas.create_image(xp,yp,image=ex)
+        return True
+    
+    if (xp >= xi and xp <= xi+31 and yp >= ya and yp <= yi+64):
+        explosion=canvas.create_image(xp,yp,image=ex)
+        return True
 
 
+    if (xp >= xf and xp <= xf+31 and yp >= yf and yp <= yf+64):
+        explosion=canvas.create_image(xp,yp,image=ex)
+        return True
+    
+
+        
+
+        
+"""""
+
+
+ def collisions(item1,item2,push):
+                
+  h=90
+(xp,yp,xm,ym) =(Canvas.coords(item1)[0]-(h/2),Canvas.coords(item1)[1]-(h/2),Canvas.coords(item2)[0]-(h/2),Canvas.coords(item2)[1]-(h/2))
+a= (xp>=xm and xp<=xm+h and yp>=ym and yp<=ym+h or(xp+h>=xm and xp+h<=xm+h and yp>=ym and yp<=ym+h))
+b=(yp>=ym and yp<=ym+h and xp>xm and xp <xm+h or(yp+h>ym and yp+h <=ym+h and xp>=xm and xp<=xm) )
+c=(yp>=ym and yp<=ym+h and xp+h>xm and xp+h <xm+h or(yp+h>ym and yp+h <=ym+h and xp+h>=xm and xp+h<=xm+h) )
+if(a or b or c):
+ if(Canvas.coords(player)[0]<250):
+          Canvas.move(player,-push,0)
+                  else:
+                            Canvas.move(player,push,0)
+
+        """                    
 
 #canvas = tkinter.Canvas(ventahija,width=3000,height=800)
 #canvas.pack()
@@ -191,6 +250,10 @@ v=tkinter.PhotoImage(file="MiniVan.png")
 #a=canvas.create_Image(200,600, image=M)
 
 ventahija.iconify()
+
+
+
+
      
 def main():
     global ku, canvas, ventahija,mi
@@ -204,6 +267,9 @@ def main():
     Combustible_b()
     Fighter_a()
     Fighter_b()
+    if(Coques_a()):
+        return 0
+ 
    
 
     pantallacorriendo_a()
@@ -253,6 +319,7 @@ selec=tkinter.IntVar()
 
 boton1=tkinter.Button(ventana,text="1",command=primernivel).place(x=140,y=300)
 
+
 boton2=tkinter.Button(ventana,text="2").place(x=180,y=300)
 
 boton3=tkinter.Button(ventana,text="3").place(x=220,y=300)
@@ -264,14 +331,14 @@ boton5=tkinter.Button(ventana,text="5").place(x=300,y=300)
 
 boton11= tkinter.Button(ventana,text="JUGAR PARTIDA").place(x=100,y=350)
 boton22 = tkinter.Button(ventana,text="GUARDAR PARTIDA").place(x=100,y=450)
-boton33 = tkinter.Button(ventana,text="SALIR").place(x=100,y=500)
+boton33 = tkinter.Button(ventana,text="SALIR", command=ventana.destroy).place(x=100,y=500)
 
 
 
 #CARROS CARRETERA IZQUIERDA.
 
 M=tkinter.PhotoImage(file="MiniVan.png")
-a=canvas.create_image(200,40,image=M)
+a=canvas.create_image(250,40,image=M)
 
 R=tkinter.PhotoImage(file="Runner.png")
 i=canvas.create_image(200,40,image=R)
