@@ -195,7 +195,7 @@ def Fighter_b():
 #CHOQUESS!
 
 ex=tkinter.PhotoImage(file="explosion.png")
-def Coques_a():
+def Choques_a():
     global canvas
 
     canvas.focus_set()
@@ -222,27 +222,34 @@ def Coques_a():
         explosion=canvas.create_image(xp,yp,image=ex)
         return True
     
+def Choques_b():
+    global canvas
 
-        
+    xp2 = canvas.coords(segu)[0]
+    xa2 = canvas.coords (z) [0]
+    xi2 = canvas.coords (q) [0]
+    xf2 = canvas.coords (fig) [0]
+    yp2 = canvas.coords (segu) [1]
+    ya2 = canvas.coords (z) [1]
+    yi2 = canvas.coords (q) [1]
+    yf2 = canvas.coords (fig) [1] 
 
-        
-"""""
+     
+    if (xp2 >= xa2 and xp2 <= xa2+31 and yp2 >= ya2 and yp2 <= ya2+64):
+        explosion=canvas.create_image(xp2,yp2,image=ex)
+        return True
+    
+    if (xp2 >= xi2 and xp2 <= xi2+31 and yp2 >= ya2 and yp2 <= yi2+64):
+        explosion=canvas.create_image(xp,yp,image=ex)
+        return True
 
 
- def collisions(item1,item2,push):
-                
-  h=90
-(xp,yp,xm,ym) =(Canvas.coords(item1)[0]-(h/2),Canvas.coords(item1)[1]-(h/2),Canvas.coords(item2)[0]-(h/2),Canvas.coords(item2)[1]-(h/2))
-a= (xp>=xm and xp<=xm+h and yp>=ym and yp<=ym+h or(xp+h>=xm and xp+h<=xm+h and yp>=ym and yp<=ym+h))
-b=(yp>=ym and yp<=ym+h and xp>xm and xp <xm+h or(yp+h>ym and yp+h <=ym+h and xp>=xm and xp<=xm) )
-c=(yp>=ym and yp<=ym+h and xp+h>xm and xp+h <xm+h or(yp+h>ym and yp+h <=ym+h and xp+h>=xm and xp+h<=xm+h) )
-if(a or b or c):
- if(Canvas.coords(player)[0]<250):
-          Canvas.move(player,-push,0)
-                  else:
-                            Canvas.move(player,push,0)
+    if (xp2 >= xf2 and xp2 <= xf2+31 and yp2 >= yf2 and yp2 <= yf2+64):
+        explosion=canvas.create_image(xp2,yp2,image=ex)
+        return True
+   
 
-        """                    
+               
 
 #canvas = tkinter.Canvas(ventahija,width=3000,height=800)
 #canvas.pack()
@@ -267,7 +274,10 @@ def main():
     Combustible_b()
     Fighter_a()
     Fighter_b()
-    if(Coques_a()):
+    if(Choques_a()):
+        return 0
+    
+    if(Choques_b()):
         return 0
  
    
