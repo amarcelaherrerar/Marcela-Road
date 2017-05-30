@@ -211,93 +211,51 @@ def Choques_b():
         return True
 
 
-#RELOJ
-
-"""
-#tiempo= StringVar()
-#Label = Label(primernivel,textvariable=tiempo).place(x=38,y=120)
-#labeltiem = Label(primernivel,text=":").place(x=0,y=170)
+#PUNTOSSSSSSSSSSSSSSSS"""
     
-def Tiempo():
-    global TiempoReloj
-    Tiempo.set(str(TiempoReloj//60)+":"+str(TiempoReloj%60))
-    TiempoReloj-=1
-    primernivel.after(1000,Tiempo)
-                   
-    Tiempo()
------------------------------------------------------------
+puntos=100
+cuenta = 0
+def puntos_a():
+    global cuenta,puntos
+    textGasolina= tkinter.Label(ventahija)
+    textGasolina.config(text= str(cuenta))
+    textGasolina.place(x=670,y=130)
+    cuenta += puntos
+    ventahija.after(20000,puntos_a)
 
+cuenta2 = 0 
+def puntos_b():
+    global cuenta2,puntos
+    textGasolina= tkinter.Label(ventahija)
+    textGasolina.config(text= str(cuenta2))
+    textGasolina.place(x=670,y= 460)
+    cuenta2=cuenta2+puntos
+    ventahija.after(2000,puntos_b)
 
-entradaN11=tkinter.StringVar()
+#######VELOCIDAD###############...
+cuenta_a = 0 
+def velocidad_a():
+    global cuenta_a
+    if(cuenta_a > 201):
+        cuenta_a = cuenta_a + 0
+    else:
+        textVelocidad=tkinter.Label(ventahija)
+        textVelocidad.config(text= str(cuenta_a))
+        textVelocidad.place(x=670,y=160)
+        cuenta_a = cuenta_a + 30
+        ventahija.after(670,velocidad_a)
 
-Tiempo=tkinter.Label(ventahija,textvariable=entradaN11).place(x=100,y=260)
-timeclock = None 
-
-def Tiempo():
-
-    global timeclock
-    entradaN11.set(str(timeclock//60)+":"+str(timeclock%60))
-    timeclock-=1
-    ventahija.after(1000,Tiempo)
-                   
-    Tiempo()
-
------------------------------------
-
-rel = StringVar()
-                label = Label(ventananivel1,textvariable=rel,font=("ubuntu","24"),fg="white",bg="black").place(x=38,y=120)
-                llabel = Label(ventananivel1,text="Para ganar",font=("ubuntu","22"),fg="white",bg="black").place(x=0,y=170)
-
-                def timer():
-                    global timeclock
-                    rel.set(str(timeclock//60)+":"+str(timeclock%60))
-                    timeclock-=1
-                    ventananivel1.after(1000,timer)
-                    
-                timer()
-
-
----------------------------------
-
-
-rel = tkinter.Label()
-rel['text'] ='60'
-rel.pack()
-
-from time import strtime
-
-strtime('%S')
-
-def tic():
-    rel['text'] = strftime('%S')
-tic()
-tic()
-      def tac():
-                           
-          tic()
-           rel.after(1000, tac)
-tac() 
- -------------------------------------------       
-"""        
-def reloj(a,b,c):
-       a=a*60
-       b=b*60
-       c=c
-       resta=a-b-c
-       return resta
- 
-def reloj():
-       resta=0
-       while (resta<=100):
-           print (resta)
-       resta=resta-1
-       time.sleep()
-
-
-
-
-
-
+cuenta_b = 0            
+def velocidad_b():
+    global cuenta_b 
+    if(cuenta_b > 201):
+        cuenta_b = cuenta_b + 0
+    else:
+        textVelocidad=tkinter.Label(ventahija)
+        textVelocidad.config(text= str(cuenta_b))
+        textVelocidad.place(x=670,y=480)
+        cuenta_b = cuenta_b +30
+        ventahija.after(500,velocidad_b)
 
 
 
@@ -1298,7 +1256,10 @@ def main():
     Fighter_b()
     Choques_a()
     Choques_b()
-    reloj ()
+    puntos_a()
+    puntos_b()
+    velocidad_a()
+    velocidad_b() 
                      
                            
 
