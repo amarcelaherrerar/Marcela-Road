@@ -8,19 +8,12 @@ ventana = tkinter.Tk()
 ventana.geometry("5000x700")
 ventana.title("ROAD FIGHTER")
 ventahija=tkinter.Toplevel()
-
 lista=[ ]
-
 #FONDO DE LA PANTALLA 1.
-
 global canvas 
 canvas = tkinter.Canvas(ventahija,width=3000,height=800, bg="white")
-
 l=tkinter.PhotoImage(file="lado de la pantalla 1.png")
 izquierdo=canvas.create_image(300,0,image=l)
-
-
-
 d=tkinter.PhotoImage(file="lado de la pantalla 1.png")
 derecho= canvas.create_image(1100,350,image=d)
   
@@ -175,6 +168,7 @@ def Choques_a():
     xa = canvas.coords (a) [0]
     xi = canvas.coords (i) [0]
     xf = canvas.coords (fi) [0]
+    xc = canvas.coords (o) [0]
     yp = canvas.coords(prime)[1]
     ya= canvas.coords (a) [1]
     yi = canvas.coords (i) [1]
@@ -212,7 +206,6 @@ def Choques_a():
       canvas.move(fi,-5,0)
       explosion=canvas.create_image(canvas.coords(prime)[0],canvas.coords(prime)[1], image=explosionpng)
       canvas.move(prime, 0, -20000)
-
       
     elif  canvas.coords(prime)[0]<=180:
 
@@ -220,10 +213,7 @@ def Choques_a():
       canvas.move(fi,5,0)
       explosion=canvas.create_image(canvas.coords(prime)[0],canvas.coords(prime)[1], image=explosionpng)
       canvas.move(prime, 0, -20000)
-   
 
-
-       
 def Choques_b():
     global canvas, cuentaGasolina11,cuentaVelocidad11 
     xp2 = canvas.coords(segu)[0]
@@ -243,8 +233,7 @@ def Choques_b():
         return True  
     if (xp2 + 23 >= xa2 and xp2 <= xa2 + 23 and ya2+23>= yp2 and ya2 <= yp2 + 46): 
         canvas.move(segu,-5,0)     
-
-    
+   
     
     if (xp2 >= xi2 and xp2 <= xi2+23 and yp2 >= yi2 and yp2 <= yi2+46):
         canvas.move(segu,5,0)
@@ -253,13 +242,11 @@ def Choques_b():
         canvas.move(segu,-5,0) 
 
 
-
     if (xp2 >= xf2 and xp2 <= xf2+23 and yp2 >= yf2 and yp2 <= yf2+46):
         canvas.move(segu,5,0) 
         return True
     if (xp2 + 23 >= xf2 and xp2 <= xf2 + 23 and yf2+23>= yp2 and yf2 <= yp2 + 46): 
         canvas.move(segu,-5,0)
-
 
     if canvas.coords(segu)[0]>=1280 :
 
@@ -275,32 +262,17 @@ def Choques_b():
       canvas.move(fig,5,0)
       explosion=canvas.create_image(canvas.coords(segu)[0],canvas.coords(segu)[1], image=explosionpng)
       canvas.move(segu, 0, -20000)
-   
 
 
 
-
-
-
-
-### SEGUNDO NIVEL ##########################################################################################################################
-
-
+#SEGUNDO NIVEL.
 lista2=[ ]
-
-
 #FONDO DE LA PANTALLA 2.
-
-
-
 l2=tkinter.PhotoImage(file="lado de la pantalla 2.png")
 izquierdo2=canvas.create_image(300,0,image=l2)
 
-
 d2=tkinter.PhotoImage(file="lado de la pantalla 2.png")
 derecho2= canvas.create_image(1100,350,image=d2)
-
-  
 
 #CARROS CARRETERA IZQUIERDA.
 M=tkinter.PhotoImage(file="MiniVan.png")
@@ -312,27 +284,21 @@ i=canvas.create_image(200,40,image=R)
 C=tkinter.PhotoImage(file="Combustible.png")
 o=canvas.create_image(400,40,image=C)
 
-
 F1=tkinter.PhotoImage(file="Figther.png")
 fi=canvas.create_image(300,40,image=F1)
-
 
 #CARROS CARRETERA DERECHA.
 M2=tkinter.PhotoImage(file="MiniVan.png")
 z=canvas.create_image(1000,40,image=M2)
 
-
 R2=tkinter.PhotoImage(file="Runner.png")
 q=canvas.create_image(1000,40,image=R2)
-
 
 C2=tkinter.PhotoImage(file="Combustible.png")
 y=canvas.create_image(1200,40,image=C2)
 
-
 F2=tkinter.PhotoImage(file="Figther.png")
 fig=canvas.create_image(1200,40,image=F2)
-
 
 # MINIVAN2 DE LA IZQUIERDA CORRIENDO.   
 m2=0    
@@ -341,18 +307,18 @@ def Van2():
     canvas.move(a,0,5)
     if canvas.coords(a)[1]>=800:
         canvas.move(a,0,-canvas.coords(a)[1])
-    
+        
 #PANTALLA DE LA IZQUIERDA CORRIENDO.
 def pantallacorriendo_a2():
     global ventana , canvas 
-    canvas.move(izquierdo2,0,15)
+    canvas.move(izquierdo2,0,16)
     if canvas.coords(izquierdo2)[1]>=2400:
         canvas.move(izquierdo2,0,-canvas.coords(izquierdo2)[1])
 
 #PANTALLA DE LA DERECHA CORRIENDO.
 def pantallacorriendo_b2():
     global ventana , canvas 
-    canvas.move(derecho2,0,15)
+    canvas.move(derecho2,0,16)
     if canvas.coords(derecho2)[1]>=2400:
         canvas.move(derecho2,0,-canvas.coords(derecho2)[1])
 
@@ -366,26 +332,22 @@ def Van_b2():
 #RUNNER DE LA IZQUIERDA CORRIENDO.
 direccion2=1    
 def Runner_a2():
-    global ventana, canvas, i, direccion2
-    
+    global ventana, canvas, i, direccion2    
     canvas.move(i,-1,1)
     if canvas.coords(i)[0]<=200:
         direccion2*=-1
         canvas.move(i,30,0)
-
     if (canvas.coords(i)[0]>=400):
          canvas.move(i,-30,1)
          direccion2*=-1
-    canvas.move(i,-5*direccion2,1)
-    
+    canvas.move(i,-5*direccion2,1)    
     if canvas.coords(i)[1]>=800:
         canvas.move(i,0,-canvas.coords(i)[1])    
 
 #RUNNER DE LA DERECHA CORRIENDO.
 direccion2=1    
 def Runner_b2():
-    global ventana, canvas, q, direccion2
-    
+    global ventana, canvas, q, direccion2    
     canvas.move(q,-1,1)
     if canvas.coords(q)[0]<=1500:
         direccion2*=-1
@@ -399,16 +361,14 @@ def Runner_b2():
     if canvas.coords(q)[1]>=800:
         canvas.move(q,0,-canvas.coords(q)[1])    
         
-#COMBUSTIBLE DE LA IZQUIERDA CORRIENDO.
-        
+#COMBUSTIBLE DE LA IZQUIERDA CORRIENDO.        
 def Combustible_a2():
     global ventana, canvas, z
     canvas.move(o,0,5)
     if canvas.coords(o)[1]>=800:
         canvas.move(o,0,-canvas.coords(o)[1])
  
-#COMBUSTIBLE DE LA DERECHA CORRIENDO.
-        
+#COMBUSTIBLE DE LA DERECHA CORRIENDO.        
 def Combustible_b2():
     global ventana, canvas, z
     canvas.move(y,0,5)
@@ -416,7 +376,6 @@ def Combustible_b2():
         canvas.move(y,0,-canvas.coords(y)[1])
 
 #JUGADORES CORREN CON EL TECLADO.
-
 def keyup2(e2):
   global x,lista2
   if(e.keycode in lista2):
@@ -446,7 +405,6 @@ def key2():
     canvas.move(segu,5,0)
     
 #FIGHTER DE LA IZQUIERDA PERSIGUE AL JUGADOR DE LA IZQ
-
 def Fighter_a2():
    if(canvas.coords(fi)[1] < 700):
         if(canvas.coords(prime)[0]< canvas.coords(fi)[0]):
@@ -472,8 +430,7 @@ def Fighter_b2():
    else:
       canvas.move(fig,0,-700)
 
-#CHOQUESS!
-
+#CHOQUE DE LA CARRETERA DERECHA.
 def Choques_a2():
     global canvas, explosionpng, cuentaGasolina2, explosionpng, cuentaVelocidad2
 
@@ -528,9 +485,7 @@ def Choques_a2():
       explosion=canvas.create_image(canvas.coords(prime)[0],canvas.coords(prime)[1], image=explosionpng)
       canvas.move(prime, 0, -20000)
    
-
-
-       
+#CHOQUES DE LA CARRETERA IZQUIERDA.        
 def Choques_b2():
     global canvas, cuentaGasolina22,cuentaVelocidad22 
     xp2 = canvas.coords(segu)[0]
@@ -549,17 +504,13 @@ def Choques_b2():
 
         return True  
     if (xp2 + 23 >= xa2 and xp2 <= xa2 + 23 and ya2+23>= yp2 and ya2 <= yp2 + 46): 
-        canvas.move(segu,-5,0)     
-
-    
+        canvas.move(segu,-5,0)        
     
     if (xp2 >= xi2 and xp2 <= xi2+23 and yp2 >= yi2 and yp2 <= yi2+46):
         canvas.move(segu,5,0)
         return True
     if (xp2 + 23 >= xi2 and xp2 <= xi2 + 23 and yi2+23>= yp2 and yi2 <= yp2 + 46): 
         canvas.move(segu,-5,0) 
-
-
 
     if (xp2 >= xf2 and xp2 <= xf2+23 and yp2 >= yf2 and yp2 <= yf2+46):
         canvas.move(segu,5,0) 
@@ -569,7 +520,6 @@ def Choques_b2():
 
 
     if canvas.coords(segu)[0]>=1280 :
-
       cuentaGasolina22=0
       canvas.move(fig,-5,0)
       explosion=canvas.create_image(canvas.coords(segu)[0],canvas.coords(segu)[1], image=explosionpng)
@@ -577,70 +527,39 @@ def Choques_b2():
 
       
     elif  canvas.coords(segu)[0]<=1000:
-
       cuentaGasolina22=0
       canvas.move(fig,5,0)
       explosion=canvas.create_image(canvas.coords(segu)[0],canvas.coords(segu)[1], image=explosionpng)
       canvas.move(segu, 0, -20000)
-   
-   
-
-
-
-
-
-
+     
 ventahija.iconify()
-##TERCER NIVEL ############################################################################################
-
-
+##TERCER NIVEL.
 lista3=[ ]
-
-
 #FONDO DE LA PANTALLA 3.
-
-
-
 l3=tkinter.PhotoImage(file="lado de la pantalla 3.png")
 izquierdo3=canvas.create_image(300,0,image=l3)
-
-
 d3=tkinter.PhotoImage(file="lado de la pantalla 3.png")
 derecho3= canvas.create_image(1100,350,image=d3)
-
-  
 
 #CARROS CARRETERA IZQUIERDA.
 M=tkinter.PhotoImage(file="MiniVan.png")
 a=canvas.create_image(250,40,image=M)
-
 R=tkinter.PhotoImage(file="Runner.png")
 i=canvas.create_image(200,40,image=R)
-
 C=tkinter.PhotoImage(file="Combustible.png")
 o=canvas.create_image(400,40,image=C)
-
-
 F1=tkinter.PhotoImage(file="Figther.png")
 fi=canvas.create_image(300,40,image=F1)
-
 
 #CARROS CARRETERA DERECHA.
 M2=tkinter.PhotoImage(file="MiniVan.png")
 z=canvas.create_image(1000,40,image=M2)
-
-
 R2=tkinter.PhotoImage(file="Runner.png")
 q=canvas.create_image(1000,40,image=R2)
-
-
 C2=tkinter.PhotoImage(file="Combustible.png")
 y=canvas.create_image(1200,40,image=C2)
-
-
 F2=tkinter.PhotoImage(file="Figther.png")
 fig=canvas.create_image(1200,40,image=F2)
-
 
 # MINIVAN2 DE LA IZQUIERDA CORRIENDO.   
 m3=0    
@@ -653,14 +572,14 @@ def Van3():
 #PANTALLA DE LA IZQUIERDA CORRIENDO.
 def pantallacorriendo_a3():
     global ventana , canvas 
-    canvas.move(izquierdo3,0,5)
+    canvas.move(izquierdo3,0,17)
     if canvas.coords(izquierdo3)[1]>=2400:
         canvas.move(izquierdo3,0,-canvas.coords(izquierdo3)[1])
 
 #PANTALLA DE LA DERECHA CORRIENDO.
 def pantallacorriendo_b3():
     global ventana , canvas 
-    canvas.move(derecho3,0,5)
+    canvas.move(derecho3,0,17)
     if canvas.coords(derecho3)[1]>=2400:
         canvas.move(derecho3,0,-canvas.coords(derecho3)[1])
 
@@ -674,18 +593,15 @@ def Van_b3():
 #RUNNER DE LA IZQUIERDA CORRIENDO.
 direccion3=1    
 def Runner_a3():
-    global ventana, canvas, i, direccion3
-    
+    global ventana, canvas, i, direccion3    
     canvas.move(i,-1,1)
     if canvas.coords(i)[0]<=200:
         direccion3*=-1
         canvas.move(i,30,0)
-
     if (canvas.coords(i)[0]>=400):
          canvas.move(i,-30,1)
          direccion3*=-1
-    canvas.move(i,-5*direccion3,1)
-    
+    canvas.move(i,-5*direccion3,1)    
     if canvas.coords(i)[1]>=800:
         canvas.move(i,0,-canvas.coords(i)[1])    
 
@@ -693,17 +609,14 @@ def Runner_a3():
 direccion3=1    
 def Runner_b3():
     global ventana, canvas, q, direccion3
-    
     canvas.move(q,-1,1)
     if canvas.coords(q)[0]<=1500:
         direccion3*=-1
         canvas.move(q,30,0)
-
     if (canvas.coords(q)[0]>=500):
          canvas.move(q,-30,1)
          direccion3*=-1
-    canvas.move(q,-5*direccion3,1)
-    
+    canvas.move(q,-5*direccion3,1)    
     if canvas.coords(q)[1]>=800:
         canvas.move(q,0,-canvas.coords(q)[1])    
         
@@ -755,7 +668,7 @@ def key3():
     
 #FIGHTER DE LA IZQUIERDA PERSIGUE AL JUGADOR DE LA IZQ
 
-def Fighter_a3():
+def Fighter_a2():
    if(canvas.coords(fi)[1] < 700):
         if(canvas.coords(prime)[0]< canvas.coords(fi)[0]):
           canvas.move(fi,-2,5)
@@ -766,13 +679,13 @@ def Fighter_a3():
            canvas.move(fi,2,5)
    else:
       canvas.move(fi,0,-700)
+ 
        
 #FIGHTER DE LA DERECHA PERSIGUE AL JUGADOR DE LA DERCHA.
 def Fighter_b3():
    if(canvas.coords(fig)[1] < 700):
         if(canvas.coords(segu)[0]< canvas.coords(fig)[0]):
-          canvas.move(fig,-2,5)
-          
+          canvas.move(fig,-2,5)          
         elif(canvas.coords(segu)[0] > canvas.coords (fig)[0]):
            canvas.move(fig, 2,5)
         else:
@@ -780,8 +693,7 @@ def Fighter_b3():
    else:
       canvas.move(fig,0,-700)
 
-#CHOQUESS!
-
+#CHOQUES
 def Choques_a3():
     global canvas, explosionpng, cuentaGasolina3, explosionpng, cuentaVelocidad3
 
@@ -799,12 +711,9 @@ def Choques_a3():
         canvas.move(prime,10,0)
         cuentaGasolina3=cuentaGasolina3-400
         cuentaVelocidad3=cuentaVelocidad3-20
-
         return True  
     if (xp2 + 23 >= xa2 and xp2 <= xa2 + 23 and ya2+23>= yp2 and ya2 <= yp2 + 46): 
-        canvas.move(prime,-5,0)     
-
-    
+        canvas.move(prime,-5,0)      
     
     if (xp2 >= xi2 and xp2 <= xi2+23 and yp2 >= yi2 and yp2 <= yi2+46):
         canvas.move(prime,5,0)
@@ -812,22 +721,17 @@ def Choques_a3():
     if (xp2 + 23 >= xi2 and xp2 <= xi2 + 23 and yi2+23>= yp2 and yi2 <= yp2 + 46): 
         canvas.move(prime,-5,0) 
 
-
-
     if (xp2 >= xf2 and xp2 <= xf2+23 and yp2 >= yf2 and yp2 <= yf2+46):
         canvas.move(prime,5,0) 
         return True
     if (xp2 + 23 >= xf2 and xp2 <= xf2 + 23 and yf2+23>= yp2 and yf2 <= yp2 + 46): 
         canvas.move(prime,-5,0)
-
-
     if canvas.coords(prime)[0]>=455 :
 
       cuentaGasolina3=0
       canvas.move(fi,-5,0)
       explosion=canvas.create_image(canvas.coords(prime)[0],canvas.coords(prime)[1], image=explosionpng)
       canvas.move(prime, 0, -20000)
-
       
     elif  canvas.coords(prime)[0]<=180:
 
@@ -835,9 +739,6 @@ def Choques_a3():
       canvas.move(fi,5,0)
       explosion=canvas.create_image(canvas.coords(prime)[0],canvas.coords(prime)[1], image=explosionpng)
       canvas.move(prime, 0, -20000)
-   
-
-
        
 def Choques_b3():
     global canvas, cuentaGasolina33,cuentaVelocidad33 
@@ -857,24 +758,18 @@ def Choques_b3():
 
         return True  
     if (xp2 + 23 >= xa2 and xp2 <= xa2 + 23 and ya2+23>= yp2 and ya2 <= yp2 + 46): 
-        canvas.move(segu,-5,0)     
-
-    
+        canvas.move(segu,-5,0)
     
     if (xp2 >= xi2 and xp2 <= xi2+23 and yp2 >= yi2 and yp2 <= yi2+46):
         canvas.move(segu,5,0)
         return True
     if (xp2 + 23 >= xi2 and xp2 <= xi2 + 23 and yi2+23>= yp2 and yi2 <= yp2 + 46): 
-        canvas.move(segu,-5,0) 
-
-
-
+        canvas.move(segu,-5,0)
     if (xp2 >= xf2 and xp2 <= xf2+23 and yp2 >= yf2 and yp2 <= yf2+46):
-        canvas.move(segu,5,0) 
+        canvas.move(segu,5,0)
         return True
     if (xp2 + 23 >= xf2 and xp2 <= xf2 + 23 and yf2+23>= yp2 and yf2 <= yp2 + 46): 
         canvas.move(segu,-5,0)
-
 
     if canvas.coords(segu)[0]>=1280 :
 
@@ -882,7 +777,6 @@ def Choques_b3():
       canvas.move(fig,-5,0)
       explosion=canvas.create_image(canvas.coords(segu)[0],canvas.coords(segu)[1], image=explosionpng)
       canvas.move(segu, 0, -20000)
-
       
     elif  canvas.coords(segu)[0]<=1000:
 
@@ -891,62 +785,36 @@ def Choques_b3():
       explosion=canvas.create_image(canvas.coords(segu)[0],canvas.coords(segu)[1], image=explosionpng)
       canvas.move(segu, 0, -20000)
    
-
-
-
 ventahija.iconify()
 
 
 #CUARTO NIVEL.
-
-
 lista4=[ ]
-
-
 #FONDO DE LA PANTALLA 4.
-
-
-
 l4=tkinter.PhotoImage(file="lado de la pantalla 4.png")
 izquierdo4=canvas.create_image(300,0,image=l4)
-
-
 d4=tkinter.PhotoImage(file="lado de la pantalla 4.png")
 derecho4= canvas.create_image(1100,350,image=d4)
-
-  
 
 #CARROS CARRETERA IZQUIERDA.
 M=tkinter.PhotoImage(file="MiniVan.png")
 a=canvas.create_image(250,40,image=M)
-
 R=tkinter.PhotoImage(file="Runner.png")
 i=canvas.create_image(200,40,image=R)
-
 C=tkinter.PhotoImage(file="Combustible.png")
 o=canvas.create_image(400,40,image=C)
-
-
 F1=tkinter.PhotoImage(file="Figther.png")
 fi=canvas.create_image(300,40,image=F1)
-
 
 #CARROS CARRETERA DERECHA.
 M2=tkinter.PhotoImage(file="MiniVan.png")
 z=canvas.create_image(1000,40,image=M2)
-
-
 R2=tkinter.PhotoImage(file="Runner.png")
 q=canvas.create_image(1000,40,image=R2)
-
-
 C2=tkinter.PhotoImage(file="Combustible.png")
 y=canvas.create_image(1200,40,image=C2)
-
-
 F2=tkinter.PhotoImage(file="Figther.png")
 fig=canvas.create_image(1200,40,image=F2)
-
 
 # MINIVAN2 DE LA IZQUIERDA CORRIENDO.   
 m4=0    
@@ -959,14 +827,14 @@ def Van4():
 #PANTALLA DE LA IZQUIERDA CORRIENDO.
 def pantallacorriendo_a4():
     global ventana , canvas 
-    canvas.move(izquierdo4,0,5)
+    canvas.move(izquierdo4,0,18)
     if canvas.coords(izquierdo4)[1]>=2400:
         canvas.move(izquierdo4,0,-canvas.coords(izquierdo4)[1])
 
 #PANTALLA DE LA DERECHA CORRIENDO.
 def pantallacorriendo_b4():
     global ventana , canvas 
-    canvas.move(derecho4,0,5)
+    canvas.move(derecho4,0,18)
     if canvas.coords(derecho4)[1]>=2400:
         canvas.move(derecho4,0,-canvas.coords(derecho4)[1])
 
@@ -976,7 +844,7 @@ def Van_b4():
     canvas.move(z,0,5)
     if canvas.coords(z)[1]>=800:
         canvas.move(z,0,-canvas.coords(z)[1])
-
+        
 #RUNNER DE LA IZQUIERDA CORRIENDO.
 direccion4=1    
 def Runner_a4():
@@ -986,7 +854,6 @@ def Runner_a4():
     if canvas.coords(i)[0]<=200:
         direccion4*=-1
         canvas.move(i,30,0)
-
     if (canvas.coords(i)[0]>=400):
          canvas.move(i,-30,1)
          direccion4*=-1
@@ -1004,7 +871,6 @@ def Runner_b4():
     if canvas.coords(q)[0]<=1500:
         direccion4*=-1
         canvas.move(q,30,0)
-
     if (canvas.coords(q)[0]>=500):
          canvas.move(q,-30,1)
          direccion4*=-1
@@ -1105,12 +971,9 @@ def Choques_a4():
         canvas.move(prime,10,0)
         cuentaGasolina4=cuentaGasolina4-400
         cuentaVelocidad4=cuentaVelocidad4-20
-
         return True  
     if (xp + 23 >= xa and xp <= xa + 23 and ya+23>= yp and ya <= yp + 46): 
-        canvas.move(prime,-5,0)     
-
-    
+        canvas.move(prime,-5,0)      
     
     if (xp >= xi and xp <= xi+23 and yp >= yi and yp <= yi+46):
         canvas.move(prime,5,0)
@@ -1118,14 +981,11 @@ def Choques_a4():
     if (xp + 23 >= xi and xp <= xi + 23 and yi+23>= yp and yi <= yp + 46): 
         canvas.move(prime,-5,0) 
 
-
-
     if (xp >= xf and xp <= xf+23 and yp >= yf and yp <= yf+46):
         canvas.move(prime,5,0) 
         return True
     if (xp + 23 >= xf and xp <= xf + 23 and yf+23>= yp and yf <= yp + 46): 
         canvas.move(prime,-5,0)
-
 
     if canvas.coords(prime)[0]>=455 :
 
@@ -1133,15 +993,13 @@ def Choques_a4():
       canvas.move(fi,-5,0)
       explosion=canvas.create_image(canvas.coords(prime)[0],canvas.coords(prime)[1], image=explosionpng)
       canvas.move(prime, 0, -20000)
-
       
     elif  canvas.coords(prime)[0]<=180:
 
       cuentaGasolina4=0
       canvas.move(fi,5,0)
       explosion=canvas.create_image(canvas.coords(prime)[0],canvas.coords(prime)[1], image=explosionpng)
-      canvas.move(prime, 0, -20000)
-   
+      canvas.move(prime, 0, -20000) 
 
 
        
@@ -1163,9 +1021,7 @@ def Choques_b4():
 
         return True  
     if (xp2 + 23 >= xa2 and xp2 <= xa2 + 23 and ya2+23>= yp2 and ya2 <= yp2 + 46): 
-        canvas.move(segu,-5,0)     
-
-    
+        canvas.move(segu,-5,0)    
     
     if (xp2 >= xi2 and xp2 <= xi2+23 and yp2 >= yi2 and yp2 <= yi2+46):
         canvas.move(segu,5,0)
@@ -1180,7 +1036,6 @@ def Choques_b4():
         return True
     if (xp2 + 23 >= xf2 and xp2 <= xf2 + 23 and yf2+23>= yp2 and yf2 <= yp2 + 46): 
         canvas.move(segu,-5,0)
-
 
     if canvas.coords(segu)[0]>=1280 :
 
@@ -1200,60 +1055,35 @@ def Choques_b4():
 
 ventahija.iconify()
 
-
-
-
-
-###################### NIVEL 5 #########################################################
-
-
+#NIVEL 5.
 lista5=[ ]
-
-
-#FONDO DE LA PANTALLA 54.
-
-
-
+#FONDO DE LA PANTALLA 5
 l5=tkinter.PhotoImage(file="lado de la pantalla 5.png")
 izquierdo5=canvas.create_image(300,0,image=l5)
-
-
 d5=tkinter.PhotoImage(file="lado de la pantalla 5.png")
-derecho5= canvas.create_image(1100,350,image=d5)
-
-  
+derecho5= canvas.create_image(1100,350,image=d5) 
 
 #CARROS CARRETERA IZQUIERDA.
 M=tkinter.PhotoImage(file="MiniVan.png")
 a=canvas.create_image(250,40,image=M)
-
 R=tkinter.PhotoImage(file="Runner.png")
 i=canvas.create_image(200,40,image=R)
-
 C=tkinter.PhotoImage(file="Combustible.png")
 o=canvas.create_image(400,40,image=C)
-
-
 F1=tkinter.PhotoImage(file="Figther.png")
 fi=canvas.create_image(300,40,image=F1)
-
-
 #CARROS CARRETERA DERECHA.
 M2=tkinter.PhotoImage(file="MiniVan.png")
 z=canvas.create_image(1000,40,image=M2)
 
-
 R2=tkinter.PhotoImage(file="Runner.png")
 q=canvas.create_image(1000,40,image=R2)
-
 
 C2=tkinter.PhotoImage(file="Combustible.png")
 y=canvas.create_image(1200,40,image=C2)
 
-
 F2=tkinter.PhotoImage(file="Figther.png")
 fig=canvas.create_image(1200,40,image=F2)
-
 
 # MINIVAN2 DE LA IZQUIERDA CORRIENDO.   
 m5=0    
@@ -1266,14 +1096,14 @@ def Van5():
 #PANTALLA DE LA IZQUIERDA CORRIENDO.
 def pantallacorriendo_a5():
     global ventana , canvas 
-    canvas.move(izquierdo5,0,15)
+    canvas.move(izquierdo5,0,19)
     if canvas.coords(izquierdo5)[1]>=2500:
         canvas.move(izquierdo5,0,-canvas.coords(izquierdo5)[1])
 
 #PANTALLA DE LA DERECHA CORRIENDO.
 def pantallacorriendo_b5():
     global ventana , canvas 
-    canvas.move(derecho5,0,15)
+    canvas.move(derecho5,0,19)
     if canvas.coords(derecho5)[1]>=2500:
         canvas.move(derecho5,0,-canvas.coords(derecho5)[1])
 
@@ -1508,8 +1338,7 @@ def Choques_b5():
 ventahija.iconify()   
 
 
-############################################################################################################################
-
+#llamas de las funciones. 
 
 cuentaGasolina1 = 2000
 Gasolina1 = tkinter.StringVar()  
@@ -1612,9 +1441,6 @@ def mainDere():
     ventana.iconify() 
     ventahija.after(15,mainDere)
 
-
-
-##################################################
 def primernivel():
         
     txtNombre1=tkinter.Label(ventahija,text=entradaN.get()).place(x=670,y=100)
@@ -1632,9 +1458,7 @@ def primernivel():
     lblDistancia1=tkinter.Label(ventahija,textvariable=Distancia1).place(x=690, y=220)
     lblDistancia11=tkinter.Label(ventahija,textvariable=Distancia11).place(x=690, y=550)
 
-
-  
-       
+      
     canvas.delete(derecho2)
     canvas.delete(izquierdo2)
     canvas.delete(derecho3)
@@ -1644,12 +1468,10 @@ def primernivel():
     canvas.delete(derecho5)
     canvas.delete(izquierdo5)
     mainDere()
-    
-                     
+                      
     main()
     
     
-
 
 
 cuentaGasolina2 = 2000
@@ -1668,23 +1490,16 @@ Distancia2 = tkinter.StringVar()
 def main2():
     global ku, canvas, ventahija,mi, cuentaGasolina2, Gasolina2, cuentaVelocidad2, Velocidad2, cuentaTiempo2, Tiempo2, cuentaDistancia2, Distancia2
  
-    Van2()
-   
-    Runner_a2()
-    
-    Combustible_a2()
-    
-    Fighter_a2()
- 
-    Choques_a2()        
-      
-     
-    pantallacorriendo_a2()
-    
+    Van2()   
+    Runner_a2()    
+    Combustible_a2()    
+    Fighter_a2() 
+    Choques_a2()
+       
+    pantallacorriendo_a2()   
         
     ventahija.deiconify()
     key()
-
 
     if cuentaGasolina2 > 0: 
        cuentaGasolina2 += -0.1 
@@ -1704,11 +1519,9 @@ def main2():
        Tiempo2.set (round (cuentaTiempo2))
     else:
       return 0
-
  
     cuentaDistancia2 += 1
     Distancia2.set (cuentaDistancia2)
-
 
     
     ventana.iconify()
@@ -1730,8 +1543,6 @@ cuentaDistancia22 = 0
 Distancia22 = tkinter.StringVar()
 def main2Dere():
     global ku, canvas, ventahija,mi, cuentaGasolina22, Gasolina22, cuentaVelocidad22, Velocidad22, cuentaTiempo22, Tiempo22, cuentaDistancia22, Distancia22
-
-    
     Van_b2()
     Runner_b2()
     Combustible_b2()
@@ -1772,9 +1583,6 @@ def main2Dere():
 
 
 def segundonivel():
-
-
-
     
     txtNombre1=tkinter.Label(ventahija,text=entradaN.get()).place(x=670,y=100)
     txtNombre2=tkinter.Label(ventahija,text=entradaN1.get()).place(x=670,y=430)
@@ -1791,11 +1599,6 @@ def segundonivel():
     lblDistancia2=tkinter.Label(ventahija,textvariable=Distancia2).place(x=690, y=220)
     lblDistancia22=tkinter.Label(ventahija,textvariable=Distancia22).place(x=690, y=550)
 
-
-
-
-
-
     
     canvas.delete(derecho3)
     canvas.delete(izquierdo3)
@@ -1808,14 +1611,6 @@ def segundonivel():
     main2()
     main2Dere() 
     
-
-
-
-
-
-
-
-
 cuentaGasolina3 = 2000
 Gasolina3 = tkinter.StringVar()  
 
@@ -1835,10 +1630,8 @@ def main3():
     Runner_a3()
     Combustible_a3()
     Fighter_a3()
-    Choques_a3()
-      
-    pantallacorriendo_a3()
-    
+    Choques_a3()      
+    pantallacorriendo_a3()   
         
     ventahija.deiconify()
     key()
@@ -1848,7 +1641,6 @@ def main3():
        Gasolina3.set (round(cuentaGasolina3))
     else:
       return 0
-
 
     if cuentaVelocidad3 <300:
        cuentaVelocidad3 += 1
@@ -1861,17 +1653,12 @@ def main3():
        Tiempo3.set (round (cuentaTiempo3))
     else:
       return 0
-
  
     cuentaDistancia3 += 1
     Distancia3.set (cuentaDistancia3)
     ventana.iconify()
  
     ventahija.after(15,main3)
-
-
-
-
 
 
 cuentaGasolina33 = 2000
@@ -1885,9 +1672,6 @@ Tiempo33 = tkinter.StringVar()
 
 cuentaDistancia33 = 0
 Distancia33 = tkinter.StringVar() 
-
-
-
 
 def main3Dere():
     global ku, canvas, ventahija,mi, cuentaGasolina33, Gasolina33, cuentaVelocidad33, Velocidad33, cuentaTiempo33, Tiempo33, cuentaDistancia33, Distancia33
@@ -1907,8 +1691,6 @@ def main3Dere():
        Gasolina33.set (round(cuentaGasolina33))
     else:
       return 0
-
-
     if cuentaVelocidad33 <300:
        cuentaVelocidad33 += 1
        Velocidad33.set (cuentaVelocidad33)
@@ -1919,23 +1701,17 @@ def main3Dere():
        cuentaTiempo33 += (0.01)
        Tiempo33.set (round (cuentaTiempo33))
     else:
-      return 0
-
- 
+      return 0 
     cuentaDistancia33 += 1
     Distancia33.set (cuentaDistancia33)
     ventana.iconify()
  
     ventahija.after(15,main3Dere)
 
-
-
-
 def tercernivel():
     txtNombre1=tkinter.Label(ventahija,text=entradaN.get()).place(x=670,y=100)
     txtNombre2=tkinter.Label(ventahija,text=entradaN1.get()).place(x=670,y=430)
 
-    
     lblGasolina3=tkinter.Label(ventahija,textvariable=Gasolina3).place(x=690, y=130)
     lblGasolina33=tkinter.Label(ventahija,textvariable=Gasolina33).place(x=690, y=460)
 
@@ -1947,8 +1723,6 @@ def tercernivel():
 
     lblDistancia3=tkinter.Label(ventahija,textvariable=Distancia3).place(x=690, y=220)
     lblDistancia33=tkinter.Label(ventahija,textvariable=Distancia33).place(x=690, y=550)
-
-
     
     canvas.delete(izquierdo)
     canvas.delete(derecho)
@@ -1962,7 +1736,7 @@ def tercernivel():
     main3()
     main3Dere() 
 
-###########################################
+
 cuentaGasolina4 = 2000
 Gasolina4 = tkinter.StringVar()  
 
@@ -1975,22 +1749,15 @@ Tiempo4 = tkinter.StringVar()
 cuentaDistancia4 = 0
 Distancia4 = tkinter.StringVar() 
 
-
 def main4():
     global ku, canvas, ventahija,mi, cuentaGasolina4, Gasolina4, cuentaVelocidad4, Velocidad4, cuentaTiempo4, Tiempo4, cuentaDistancia4, Distancia4
  
-    Van4()
-    
-    Runner_a4()
-    
-    Combustible_a4()
-    
-    Fighter_a4()
-  
-    Choques_a4()
-         
-    pantallacorriendo_a4()
-          
+    Van4()    
+    Runner_a4()    
+    Combustible_a4()    
+    Fighter_a4()  
+    Choques_a4()         
+    pantallacorriendo_a4()         
     ventahija.deiconify()
     key()
 
@@ -2013,7 +1780,6 @@ def main4():
     else:
       return 0
 
- 
     cuentaDistancia4 += 1
     Distancia4.set (cuentaDistancia4)
     
@@ -2038,7 +1804,6 @@ Distancia44 = tkinter.StringVar()
 
 def main4Dere():
     global ku, canvas, ventahija,mi, cuentaGasolina44, Gasolina44, cuentaVelocidad44, Velocidad44, cuentaTiempo44, Tiempo44, cuentaDistancia44, Distancia44
-
     Van_b4()
     Runner_b4()
     Combustible_b4()
@@ -2066,15 +1831,11 @@ def main4Dere():
        cuentaTiempo44 += (0.01)
        Tiempo44.set (round (cuentaTiempo44))
     else:
-      return 0
-
- 
+      return 0 
     cuentaDistancia44 += 1
     Distancia44.set (cuentaDistancia44)
 
-
-
-  
+ 
     ventana.iconify()
     ventahija.after(15,main4Dere)
 
@@ -2106,9 +1867,6 @@ def cuartonivel():
    
     main4()
     main4Dere() 
-##############################################
-
-
 
 cuentaGasolina5 = 2000
 Gasolina5 = tkinter.StringVar()  
@@ -2125,7 +1883,6 @@ Distancia5 = tkinter.StringVar()
 
 def main5():
     global ku, canvas, ventahija,mi, cuentaGasolina5, Gasolina5, cuentaVelocidad5, Velocidad5, cuentaTiempo5, Tiempo5, cuentaDistancia5, Distancia5
- 
     Van5()    
     Runner_a5()    
     Combustible_a5()
@@ -2142,7 +1899,6 @@ def main5():
     else:
       return 0
 
-
     if cuentaVelocidad5 <300:
        cuentaVelocidad5 += 1
        Velocidad5.set (cuentaVelocidad5)
@@ -2154,15 +1910,12 @@ def main5():
        Tiempo5.set (round (cuentaTiempo5))
     else:
       return 0
-
  
     cuentaDistancia5 += 1
     Distancia5.set (cuentaDistancia5)
-    
     ventana.iconify()
  
     ventahija.after(15,main5)
-
 
 
 cuentaGasolina55 = 2000
@@ -2180,15 +1933,12 @@ Distancia55 = tkinter.StringVar()
 
 def main5Dere():
     global ku, canvas, ventahija,mi, cuentaGasolina55, Gasolina55, cuentaVelocidad55, Velocidad55, cuentaTiempo55, Tiempo55, cuentaDistancia55,Distancia55
-
-    
     Van_b5()
     Runner_b5()
     Combustible_b5()
     Fighter_b5()
     Choques_b5()
     pantallacorriendo_b5()
-
     ventahija.deiconify()
     key()
 
@@ -2209,20 +1959,12 @@ def main5Dere():
        cuentaTiempo55 += (0.01)
        Tiempo55.set (round (cuentaTiempo55))
     else:
-      return 0
-
- 
+      return 0 
     cuentaDistancia55 += 1
     Distancia55.set (cuentaDistancia55)
 
     ventana.iconify() 
     ventahija.after(15,mainDere)
-
-
-
-
-
-
 
 def quintonivel():
     txtNombre1=tkinter.Label(ventahija,text=entradaN.get()).place(x=670,y=100)
@@ -2240,10 +1982,7 @@ def quintonivel():
     lblDistancia5=tkinter.Label(ventahija,textvariable=Distancia5).place(x=690, y=220)
     lblDistancia55=tkinter.Label(ventahija,textvariable=Distancia55).place(x=690, y=550)
     
-
-
-
-    
+   
     canvas.delete(derecho4)
     canvas.delete(izquierdo4)
     canvas.delete(derecho3)
@@ -2257,12 +1996,6 @@ def quintonivel():
     main5()
     main5Dere() 
 
-###########################################
-
-
-    
-
-
 #LO DEL MENÚ.
 
 fondo=tkinter.PhotoImage(file="el_fondo.png")
@@ -2271,88 +2004,48 @@ lblFondo=tkinter.Label(ventana,image=fondo).place(x=0,y=0)
 lblNombreJ=tkinter.Label(text="NOMBRE DE LOS JUGADORES:").place(x=100,y=205)
 entradaN2=tkinter.StringVar()
 
-
 lblNombre1=tkinter.Label(text="Jugador1:").place(x=40,y=230)
 
-
 lblNombre2=tkinter.Label(text="Jugador2:").place(x=40,y=260)
-
 entradaN=tkinter.StringVar()
 
 txtNombre1=tkinter.Entry(ventana,textvariable=entradaN).place(x=100,y=230)
-
 entradaN1=tkinter.StringVar()
-
 txtNombre2=tkinter.Entry(ventana,textvariable=entradaN1).place(x=100,y=260)
-
-
 
 lblNombreN=tkinter.Label(text="Nivel:").place(x=100,y=300)
 selec=tkinter.IntVar()
-
-
 boton1=tkinter.Button(ventana,text="1",command=primernivel).place(x=140,y=300)
 
-
-
-
 boton2=tkinter.Button(ventana,text="2", command=segundonivel).place(x=180,y=300)
-
-
-
-
 boton3=tkinter.Button(ventana,text="3", command = tercernivel).place(x=220,y=300)
-
-
-
 boton4=tkinter.Button(ventana,text="4", command= cuartonivel).place(x=260,y=300)
-
 boton5=tkinter.Button(ventana,text="5", command = quintonivel).place(x=300,y=300)
-
-
 boton22 = tkinter.Button(ventana,text="GUARDAR PARTIDA").place(x=100,y=450)
 boton33 = tkinter.Button(ventana,text="SALIR", command=ventana.destroy).place(x=100,y=500)
-
-
 
 #CARROS CARRETERA IZQUIERDA.
 
 Jugador1=tkinter.PhotoImage(file="JUGADOR1.png")
 juga1=canvas.create_image(695,70,image=Jugador1)
-
-
 Jugador2=tkinter.PhotoImage(file="JUGADOR2.png")
 juga2=canvas.create_image(695,400,image=Jugador2)
-
 gasolinapng=tkinter.PhotoImage(file="gasolina.png")
 gasolin=canvas.create_image(650,140,image=gasolinapng)
-
 gasolinapng2=tkinter.PhotoImage(file="gasolina.png")
 gasolin2=canvas.create_image(650,470,image=gasolinapng2)
-
 velocidadpng=tkinter.PhotoImage(file="velocidad.png")
 veloci=canvas.create_image(650,170,image=velocidadpng)
-
 velocidadpng2=tkinter.PhotoImage(file="velocidad.png")
 veloci2=canvas.create_image(650,500,image=velocidadpng2)
-
-
 tiempopng=tkinter.PhotoImage(file="tiempo.png")
 tiem=canvas.create_image(650,200,image=tiempopng)
-
 tiempopng2=tkinter.PhotoImage(file="tiempo.png")
 tiem2=canvas.create_image(650,530,image=tiempopng2)
-
-
 distanciapng=tkinter.PhotoImage(file="distancia.png")
 dista=canvas.create_image(650,230,image=distanciapng)
-
 distanciapng2=tkinter.PhotoImage(file="distancia.png")
 dista2=canvas.create_image(650,560,image=distanciapng2)
-
-
-
-
 
 
 M=tkinter.PhotoImage(file="MiniVan.png")
