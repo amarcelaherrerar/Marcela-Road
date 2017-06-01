@@ -158,6 +158,21 @@ def Fighter_b():
    else:
       canvas.move(fig,0,-700)
 
+    
+def mancha_a():
+    global ventana, canvas, m, mancha
+    canvas.move(mancha,0,5)
+    if canvas.coords(mancha)[1]>= 1000:
+        canvas.move(mancha,0,-canvas.coords(mancha)[1])
+
+def mancha_b():
+    global ventana, canvas, m, mancha
+    canvas.move(mancha1,0,5)
+    if canvas.coords(mancha1)[1]>= 1000:
+        canvas.move(mancha1,0,-canvas.coords(mancha1)[1])
+
+
+
 #CHOQUESS!
 explosionpng=tkinter.PhotoImage(file="laexplosion.png")
 def Choques_a():
@@ -173,13 +188,24 @@ def Choques_a():
     ya= canvas.coords (a) [1]
     yi = canvas.coords (i) [1]
     yf = canvas.coords (fi) [1]
+    xm = canvas.coords(mancha) [0]
+    ym = canvas.coords(mancha1) [0]
+    
     
     if (xp >= xa and xp <= xa+23 and yp >= ya and yp <= ya+46):
         canvas.move(prime,10,0)
         cuentaGasolina1=cuentaGasolina1-400
         cuentaVelocidad1=cuentaVelocidad1-20
 
-        return True  
+        return True
+        
+    if (xp >= xm and xp <= xm+23 and yp >= ym and yp <= ym+46):
+        canvas.move(prime,10,0)
+        cuentaGasolina1=cuentaGasolina1-400
+        cuentaVelocidad1=cuentaVelocidad1-20
+
+        return True
+    
     if (xp + 23 >= xa and xp <= xa + 23 and ya+23>= yp and ya <= yp + 46): 
         canvas.move(prime,-5,0)     
 
@@ -223,14 +249,30 @@ def Choques_b():
     yp2 = canvas.coords (segu) [1]
     ya2 = canvas.coords (z) [1]
     yi2 = canvas.coords (q) [1]
-    yf2 = canvas.coords (fig) [1] 
+    yf2 = canvas.coords (fig) [1]
+    xm = canvas.coords (mancha1) [1]
+    ym = canvas.coords(mancha) [0]
+    
+
      
     if (xp2 >= xa2 and xp2 <= xa2+23 and yp2 >= ya2 and yp2 <= ya2+46):
         canvas.move(segu,10,0)
         cuentaGasolina11=cuentaGasolina11-400
         cuentaVelocidad11=cuentaVelocidad11-20
 
-        return True  
+        return True
+    
+    if (xp2 >= xm and xp2 <= xm+23 and yp2 >= ym and yp2 <= ym+46):
+        canvas.move(segu,10,0)
+        cuentaGasolina11=cuentaGasolina11-400
+        cuentaVelocidad11=cuentaVelocidad11-20
+
+        return True
+
+
+
+
+    
     if (xp2 + 23 >= xa2 and xp2 <= xa2 + 23 and ya2+23>= yp2 and ya2 <= yp2 + 46): 
         canvas.move(segu,-5,0)     
    
@@ -427,8 +469,21 @@ def Fighter_b2():
            canvas.move(fig, 2,5)
         else:
            canvas.move(fig,2,5)
-   else:
+   else: 
       canvas.move(fig,0,-700)
+      
+#manchas.
+def mancha_a2():
+    global ventana, canvas, m, mancha
+    canvas.move(mancha,0,5)
+    if canvas.coords(mancha)[1]>= 1000:
+        canvas.move(mancha,0,-canvas.coords(mancha)[1])
+
+def mancha_b2():
+    global ventana, canvas, m, mancha
+    canvas.move(mancha1,0,5)
+    if canvas.coords(mancha1)[1]>= 1000:
+        canvas.move(mancha1,0,-canvas.coords(mancha1)[1])
 
 #CHOQUE DE LA CARRETERA DERECHA.
 def Choques_a2():
@@ -668,7 +723,7 @@ def key3():
     
 #FIGHTER DE LA IZQUIERDA PERSIGUE AL JUGADOR DE LA IZQ
 
-def Fighter_a2():
+def Fighter_a3():
    if(canvas.coords(fi)[1] < 700):
         if(canvas.coords(prime)[0]< canvas.coords(fi)[0]):
           canvas.move(fi,-2,5)
@@ -692,6 +747,20 @@ def Fighter_b3():
            canvas.move(fig,2,5)
    else:
       canvas.move(fig,0,-700)
+
+
+#manchas.
+def mancha_a3():
+    global ventana, canvas, m, mancha
+    canvas.move(mancha,0,5)
+    if canvas.coords(mancha)[1]>= 1000:
+        canvas.move(mancha,0,-canvas.coords(mancha)[1])
+
+def mancha_b3():
+    global ventana, canvas, m, mancha
+    canvas.move(mancha1,0,5)
+    if canvas.coords(mancha1)[1]>= 1000:
+        canvas.move(mancha1,0,-canvas.coords(mancha1)[1])
 
 #CHOQUES
 def Choques_a3():
@@ -951,6 +1020,19 @@ def Fighter_b4():
            canvas.move(fig,2,5)
    else:
       canvas.move(fig,0,-700)
+
+#manchas.
+def mancha_a4():
+    global ventana, canvas, m, mancha
+    canvas.move(mancha,0,5)
+    if canvas.coords(mancha)[1]>= 1000:
+        canvas.move(mancha,0,-canvas.coords(mancha)[1])
+
+def mancha_b4():
+    global ventana, canvas, m, mancha
+    canvas.move(mancha1,0,5)
+    if canvas.coords(mancha1)[1]>= 1000:
+        canvas.move(mancha1,0,-canvas.coords(mancha1)[1])
 
 #CHOQUESS!
 
@@ -1222,6 +1304,20 @@ def Fighter_b5():
            canvas.move(fig,2,5)
    else:
       canvas.move(fig,0,-700)
+      
+#manchas.
+def mancha_a5():
+    global ventana, canvas, m, mancha
+    canvas.move(mancha,0,5)
+    if canvas.coords(mancha)[1]>= 1000:
+        canvas.move(mancha,0,-canvas.coords(mancha)[1])
+
+def mancha_b5():
+    global ventana, canvas, m, mancha
+    canvas.move(mancha1,0,5)
+    if canvas.coords(mancha1)[1]>= 1000:
+        canvas.move(mancha1,0,-canvas.coords(mancha1)[1])
+        
 
 #CHOQUESS!
 
@@ -1359,10 +1455,13 @@ def main():
     Combustible_a()
     Fighter_a()
     Fighter_b()
-    Choques_a()                 
+    Choques_a()
+    mancha_a()
     pantallacorriendo_a()  
     ventahija.deiconify()
+    
     key()
+    
 
     if cuentaGasolina1 > 0: 
        cuentaGasolina1 += -0.1 
@@ -1411,6 +1510,7 @@ def mainDere():
     Combustible_b()
     Fighter_b()
     Choques_b()
+    mancha_b()
     pantallacorriendo_b()
     ventahija.deiconify()
     key()
@@ -1495,6 +1595,7 @@ def main2():
     Combustible_a2()    
     Fighter_a2() 
     Choques_a2()
+    mancha_a2()
        
     pantallacorriendo_a2()   
         
@@ -1548,6 +1649,7 @@ def main2Dere():
     Combustible_b2()
     Fighter_b2()
     Choques_b2()
+    mancha_b2()
     pantallacorriendo_b2()
 
     ventahija.deiconify()
@@ -1630,7 +1732,8 @@ def main3():
     Runner_a3()
     Combustible_a3()
     Fighter_a3()
-    Choques_a3()      
+    Choques_a3()
+    mancha_a3()
     pantallacorriendo_a3()   
         
     ventahija.deiconify()
@@ -1681,6 +1784,7 @@ def main3Dere():
     Combustible_b3()
     Fighter_b3()
     Choques_b3()
+    mancha_b3()
     pantallacorriendo_b3()
 
     ventahija.deiconify()
@@ -1756,7 +1860,8 @@ def main4():
     Runner_a4()    
     Combustible_a4()    
     Fighter_a4()  
-    Choques_a4()         
+    Choques_a4()
+    mancha_a4()
     pantallacorriendo_a4()         
     ventahija.deiconify()
     key()
@@ -1809,6 +1914,7 @@ def main4Dere():
     Combustible_b4()
     Fighter_b4()
     Choques_b4()
+    mancha_b4()
     pantallacorriendo_b4()
 
     ventahija.deiconify()
@@ -1888,6 +1994,7 @@ def main5():
     Combustible_a5()
     Fighter_a5()
     Choques_a5()
+    mancha_a5()
       
     pantallacorriendo_a5()
     ventahija.deiconify()
@@ -1938,6 +2045,7 @@ def main5Dere():
     Combustible_b5()
     Fighter_b5()
     Choques_b5()
+    mancha_b5()
     pantallacorriendo_b5()
     ventahija.deiconify()
     key()
@@ -1964,7 +2072,7 @@ def main5Dere():
     Distancia55.set (cuentaDistancia55)
 
     ventana.iconify() 
-    ventahija.after(15,mainDere)
+    ventahija.after(15,main5Dere)
 
 def quintonivel():
     txtNombre1=tkinter.Label(ventahija,text=entradaN.get()).place(x=670,y=100)
@@ -2024,8 +2132,8 @@ boton5=tkinter.Button(ventana,text="5", command = quintonivel).place(x=300,y=300
 boton22 = tkinter.Button(ventana,text="GUARDAR PARTIDA").place(x=100,y=450)
 boton33 = tkinter.Button(ventana,text="SALIR", command=ventana.destroy).place(x=100,y=500)
 
-#CARROS CARRETERA IZQUIERDA.
 
+#TITULOS. 
 Jugador1=tkinter.PhotoImage(file="JUGADOR1.png")
 juga1=canvas.create_image(695,70,image=Jugador1)
 Jugador2=tkinter.PhotoImage(file="JUGADOR2.png")
@@ -2047,7 +2155,7 @@ dista=canvas.create_image(650,230,image=distanciapng)
 distanciapng2=tkinter.PhotoImage(file="distancia.png")
 dista2=canvas.create_image(650,560,image=distanciapng2)
 
-
+#CARROS CARRETERA IZQUIERDA.
 M=tkinter.PhotoImage(file="MiniVan.png")
 a=canvas.create_image(250,40,image=M)
 
@@ -2060,6 +2168,8 @@ o=canvas.create_image(400,40,image=C)
 
 F1=tkinter.PhotoImage(file="Figther.png")
 fi=canvas.create_image(300,40,image=F1)
+Mancha=tkinter.PhotoImage(file="mancha.png")
+mancha=canvas.create_image(200,40,image=Mancha)
 
 
 #CARROS CARRETERA DERECHA.
@@ -2077,6 +2187,9 @@ y=canvas.create_image(1200,40,image=C2)
 
 F2=tkinter.PhotoImage(file="Figther.png")
 fig=canvas.create_image(1200,40,image=F2)
+
+Mancha1=tkinter.PhotoImage(file="mancha.png")
+mancha1=canvas.create_image(1100,40,image=Mancha1)
 
 
 # Bindeamos
